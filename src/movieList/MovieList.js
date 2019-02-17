@@ -118,7 +118,7 @@ class MovieList extends Component {
     };
 
     componentWillMount() {
-        axios.get("http://starlord.hackerearth.com/movies").then((response) => {
+        axios.get("movieList.json").then((response) => {
             this.setState({ movielist : response.data });
         });
     }
