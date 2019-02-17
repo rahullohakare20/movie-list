@@ -1,26 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MovieList from "./movieList/MovieList";
+import {ThemeContext} from "./context/ThemeContext";
+import ThemeTogglerButton from "./themeChange/ThemeChange";
+
+export const themes = {
+    light: {
+        background: 'rgb(133, 131, 128)',
+    },
+    dark: {
+        background: '#000000',
+    },
+};
 
 class App extends Component {
-  render() {
+
+      toggleTheme = () => {
+          this.setState(state => ({
+              theme:
+                  state.theme === themes.dark
+                      ? themes.light
+                      : themes.dark,
+          }));
+      };
+
+    state = {
+        theme: themes.light,
+        toggleTheme: this.toggleTheme,
+    };
+
+   render() {
+    const mainContent = {
+        backgroundColor: this.state.theme.background,
+        height:'100%',
+        width:'100%'
+    }
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <ThemeContext.Provider value={this.state}>
+            <div style={mainContent}>
+              <ThemeTogglerButton />
+              <MovieList tableColor={this.state.theme.background} />
+            </div>
+        </ThemeContext.Provider>
     );
   }
 }
