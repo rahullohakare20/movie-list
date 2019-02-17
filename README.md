@@ -1,3 +1,14 @@
+## Movie list and theme change project by Rahul Lohakare 
+
+This project has been developed in React.
+
+Functionalities: 
+
+1.Sorting and Pagination.
+2.Theme change
+3.Material design
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
